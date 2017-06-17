@@ -1,0 +1,98 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.Mobile.master.cs" Inherits="Site_Mobile" %>
+
+<%@ Register Src="~/ViewSwitcher.ascx" TagPrefix="friendlyUrls" TagName="ViewSwitcher" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Source+Sans+Pro:300,400" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
+</head>
+<body>
+    <asp:ContentPlaceHolder runat="server" ID="MainContent" />
+
+    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAmYwF7VZG7fRj-8N-WP0f9ZyyaXmhW-XM",
+            authDomain: "scoutlook-e3648.firebaseapp.com",
+            databaseURL: "https://scoutlook-e3648.firebaseio.com",
+            projectId: "scoutlook-e3648",
+            storageBucket: "",
+            messagingSenderId: "458292073520"
+        };
+        firebase.initializeApp(config);
+
+        var database = firebase.database();
+
+        var validMessage = document.getElementById('validMessage');
+        var zipInput = document.getElementById('zipInput');
+
+        /**
+         * Retrieves 'clicks' object from Firebase and returns the length of the number of keys within it.
+         */
+        function getClickCount() {
+            var clicks = firebase.database().ref('/clicks/').once('value').then(function (snapshot) {
+                alert('Number of clicks: ' + Object.keys(snapshot.val()).length)
+            })
+        }
+
+        /**
+         * Checks to see if the Zip Code input is valid - if so, add click to database, else notify user to input valid code.
+         * @param type
+         */
+        function newClick(type) {
+            if (isValidUSZip(zipInput.value) || type != 'landing-center') {
+                setInvalidZipUI(false)
+
+                var clickData = {
+                    date: new Date(),
+                    type: type
+                };
+
+                var newPostKey = firebase.database().ref().child('clicks').push().key;
+
+                var updates = {};
+                updates['/clicks/' + newPostKey] = clickData;
+
+                firebase.database().ref().update(updates);
+
+                alert('nice');
+            } else {
+                setInvalidZipUI(true)
+            }
+        }
+
+        /**
+         * Checks code to see if it's a valid 5 digit US Zip Code.
+         * @param code
+         */
+        function isValidUSZip(code) {
+            return /(^\d{5}$)|(^\d{5}-\d{4}$)/.test(code);
+        }
+
+        /**
+         * Sets Zip validation UI to on / off depending on true / false input.
+         * @param bool
+         */
+        function setInvalidZipUI(bool) {
+            if (bool) {
+                validMessage.innerHTML = 'Please enter a valid US Zip Code.'
+                zipInput.classList.add('animated')
+                zipInput.classList.add('shake')
+                zipInput.classList.add('required')
+            } else {
+                validMessage.innerHTML = ''
+                zipInput.classList.remove('animated')
+                zipInput.classList.remove('shake')
+                zipInput.classList.remove('required')
+            }
+        }
+    </script>
+</body>
+</html>
