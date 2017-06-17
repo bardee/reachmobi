@@ -2,11 +2,13 @@
   <img src="https://preview.ibb.co/e3FDxk/scoutlooklogo.png" width="350"/>
 </p>
 
-# KBRA
+# ReachMobi - ScoutLook Landing Page
 
 A Case Study for ReachMobi Completed by John Nguyen
 
 ### [View the simplified version on CodePen](https://codepen.io/tehjawn/pen/gRgpye)
+
+### [View the Case Study on Google Docs](https://docs.google.com/document/d/1wemJg7qOxFM5pDCG3RyCtD9yGBhpKQ0ZjRgPZMKkBEU/)
 
 ---
 
@@ -52,5 +54,6 @@ A Case Study for ReachMobi Completed by John Nguyen
 
 - [ReachMobi Website](https://reachmobi.com/)
 - [Live on CodePen](https://codepen.io/tehjawn/pen/gRgpye)
+- [Case Study on Google Docs](https://docs.google.com/document/d/1wemJg7qOxFM5pDCG3RyCtD9yGBhpKQ0ZjRgPZMKkBEU/)
 - [John Nguyen Resume](https://drive.google.com/file/d/0B4L2bHrQgHD4SFd1UVp4TDNZZm8/view)
 - [John Nguyen on LinkedIn](https://www.linkedin.com/in/john-nguyen-10a4938b/)
