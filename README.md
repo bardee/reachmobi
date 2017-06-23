@@ -10,6 +10,8 @@ A Case Study for ReachMobi Completed by John Nguyen
 
 ### [View the Case Study on Google Docs](https://docs.google.com/document/d/1wemJg7qOxFM5pDCG3RyCtD9yGBhpKQ0ZjRgPZMKkBEU/)
 
+### [View the Google Drive Folder](https://drive.google.com/drive/u/0/folders/0B4L2bHrQgHD4TEN3QVVGZXFPdEk)
+
 ---
 
 ## 3 Step Setup
